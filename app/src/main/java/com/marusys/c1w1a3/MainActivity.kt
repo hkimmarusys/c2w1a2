@@ -27,7 +27,7 @@ class MainActivity : Activity() {
     private var mode: Int = 0
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
-        mode = (++mode)%6
+        mode = (++mode)%4
         plotData(mode)
         return true;
     }
@@ -69,8 +69,8 @@ class MainActivity : Activity() {
     private fun model_init(mode: Int) {
         when(mode) {
             1 -> model = FileUtil.loadMappedFile(this, "model_baseline.tflite")
-            2 -> model = FileUtil.loadMappedFile(this, "model_dropout.tflite")
-            3 -> model = FileUtil.loadMappedFile(this, "model_l2_regularized.tflite")
+            2 -> model = FileUtil.loadMappedFile(this, "model_l2_regularized.tflite")
+            3 -> model = FileUtil.loadMappedFile(this, "model_dropout.tflite")
         }
         interpreter = Interpreter(model)
     }
